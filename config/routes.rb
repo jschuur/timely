@@ -1,7 +1,10 @@
 Tweetlater::Application.routes.draw do
-  root :to => 'main#index', :as => :root
+  root :to => 'tweets#index', :as => :root
 
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/auth/failure" => "sessions#error"
-  match "/signout" => "sessions#destroy", :as => :signout
+  match "auth/twitter/callback" => "sessions#create"
+  match "auth/failure" => "sessions#error"
+  match "signout" => "sessions#destroy", :as => :signout
+  
+  match "tweets/create" => "tweets#create", :as => :tweets
+  match "tweets/shorten" => "tweets#shorten", :as => :shorten_link
 end

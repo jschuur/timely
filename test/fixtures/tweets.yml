@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 
+  long_url: MyString
+  short_url: MyString
+  message: MyString
+  user_clicks: 1
+  global_clicks: 1
+  tweeted: false
+  scheduled_date: 2011-10-01 13:35:47
+
+two:
+  user_id: 
+  long_url: MyString
+  short_url: MyString
+  message: MyString
+  user_clicks: 1
+  global_clicks: 1
+  tweeted: false
+  scheduled_date: 2011-10-01 13:35:47

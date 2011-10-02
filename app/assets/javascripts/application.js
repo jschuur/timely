@@ -6,4 +6,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+// require_tree .
+
+$(function() {
+  $(".shorten").click(function() {
+    $("#spinner").show()
+    $.get("/tweets/shorten.json?url=" + $("#tweet_long_url").val(), function(data) {
+      $("#tweet_message").val(data.title + ' ' + data.short_url)
+      $("#spinner").hide()
+    });
+  })
+})

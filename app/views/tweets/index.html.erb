@@ -1,0 +1,10 @@
+<% title 'Tweet Later' %>
+
+
+<% if current_user %>
+  <h3>New Tweet</h3>
+
+  <%= render :partial => 'form' %>
+<% else %>
+  <i>Connect to your Twitter account to view and schedule tweets.</i>
+<% end %>
