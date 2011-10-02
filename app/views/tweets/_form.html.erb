@@ -7,8 +7,9 @@
   </p>
 
   <p>
-    <%= f.label :message, "Tweet Message" %><br>
-    <%= f.text_area :message, :size => '50x3' %>
+    <%= f.label :message, "Tweet" %><br>
+    <%= f.text_area :message, :size => '50x3' %><br>
+    <span id="charcount">140 characters left</span>
   </p>
 
   <%= f.submit "Schedule Tweet", :disable_with => 'Adding...' %>

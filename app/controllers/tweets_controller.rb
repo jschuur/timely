@@ -1,3 +1,4 @@
+require 'uri'
 require 'open-uri'
 
 class TweetsController < ApplicationController
@@ -23,20 +24,29 @@ class TweetsController < ApplicationController
   end
 
   def shorten
-    (title, short_url) = shorten_url params[:url]
+    begin
+      (title, short_url, long_url) = shorten_url params[:url]
+    rescue
+      error = true
+    end
 
     respond_with do |format|
-      format.json { render :json => { :title => title, :short_url => short_url }.to_json }
+      if error
+        format.json { render :json => { :error => "Invalid URL" } }
+      else
+        format.json { render :json => { :title => title, :short_url => short_url, :long_url => long_url }.to_json }
+      end
     end
   end
 
   private
 
   def shorten_url(url)
+    url.insert(0, 'http://') unless (url.starts_with?('http://') || url.starts_with?('https://'))
     doc = Nokogiri::HTML(open(url))
     title = doc.at_css("title").inner_html
-    short_url = $bitly.shorten(url).short_url
+    short_url = $bitly.shorten(URI.encode(url)).short_url
 
-    [title, short_url]
+    [title, short_url, url]
   end
 end

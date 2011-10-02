@@ -90,4 +90,14 @@ a {
 
 #spinner {
   display: none;
+  position: relative;
+  top: 3px;
+}
+
+#charcount {
+  font-size: 8pt;
+}
+
+.charwarning {
+  font-color: red;
 }

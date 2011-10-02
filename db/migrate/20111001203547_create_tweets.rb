@@ -7,7 +7,7 @@ class CreateTweets < ActiveRecord::Migration
       t.string :message
       t.integer :user_clicks, :default => 0
       t.integer :global_clicks, :default => 0
-      t.boolean :tweeted, :default => false
+      t.string :status, :default => 'pending'
       t.datetime :scheduled_date
 
       t.timestamps
