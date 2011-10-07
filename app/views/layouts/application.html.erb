@@ -12,9 +12,13 @@
     <div id="container">
       <div id="header">
         <% if current_user %>
-          Logged in as <%= current_user.twitter_handle %> &middot; <%= link_to "Log out", signout_path %>
+          <%= link_to "Home", root_path %> &middot;
+          <%= link_to "Archive", root_path %> &middot;
+          <%= link_to "Settings", settings_path %> &middot;
+          <%= link_to "Log out", signout_path %><br>
+          Logged in as <%= current_user.twitter_handle %> 
         <% else %>
-          <%= link_to "Log in via Twitter", root_path + 'auth/twitter' %>
+          <%= link_to "Connect via Twitter", root_path + 'auth/twitter' %>
         <% end %>
       </div>
 

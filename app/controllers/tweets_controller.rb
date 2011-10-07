@@ -24,15 +24,20 @@ class TweetsController < ApplicationController
   end
 
   def shorten
-    begin
-      (title, short_url, long_url) = shorten_url params[:url]
-    rescue
-      error = true
+    if current_user.bitly_username && current_user.bitly_username.size > 0 && 
+       current_user.bitly_api_key && current_user.bitly_api_key.size > 0
+      begin
+        (title, short_url, long_url) = shorten_url params[:url]
+      rescue
+        error = "Unable to shorten URL."
+      end
+    else
+      error = "Bit.ly not configured. Visit settings to enable."
     end
 
     respond_with do |format|
       if error
-        format.json { render :json => { :error => "Invalid URL" } }
+        format.json { render :json => { :error => error } }
       else
         format.json { render :json => { :title => title, :short_url => short_url, :long_url => long_url }.to_json }
       end
@@ -45,7 +50,9 @@ class TweetsController < ApplicationController
     url.insert(0, 'http://') unless (url.starts_with?('http://') || url.starts_with?('https://'))
     doc = Nokogiri::HTML(open(url))
     title = doc.at_css("title").inner_html
-    short_url = $bitly.shorten(URI.encode(url)).short_url
+    
+    bitly = Bitly.new(current_user.bitly_username, current_user.bitly_api_key)
+    short_url = bitly.shorten(URI.encode(url)).short_url
 
     [title, short_url, url]
   end

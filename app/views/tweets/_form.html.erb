@@ -3,7 +3,8 @@
   <p>
     <%= f.label :long_url, "URL" %><br>
     <%= f.text_field :long_url %>
-    <%= content_tag :button, "shorten", :class => 'shorten', :type => 'button' %> <%= image_tag "spinner.gif", :id => "spinner"%>      
+    <%= content_tag :button, "shorten", :class => 'shorten', :type => 'button' %> <%= image_tag "spinner.gif", :id => "spinner"%><br>
+    <span id="shortenerr"></span>
   </p>
 
   <p>

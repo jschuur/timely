@@ -101,3 +101,9 @@ a {
 .charwarning {
   font-color: red;
 }
+
+#shortenerr {
+  color: red;
+  font-size: 8pt;
+  display: hidden;
+}

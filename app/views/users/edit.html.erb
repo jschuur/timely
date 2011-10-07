@@ -1,0 +1,18 @@
+<h1>User Settings</h1>
+
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :email_addresss, "Email Addresss" %><br>
+    <%= f.text_field :email_address %>
+  </p>
+  <p>
+    <%= f.label :bitly_api_key, "Bit.ly user name " %><br>
+    <%= f.text_field :bitly_username %>
+  </p>
+  <p>
+    <%= f.label :bitly_api_key, "Bit.ly API key" %><br>
+    <%= f.text_field :bitly_api_key %>
+  </p>
+  
+  <%= f.submit "Save changes", :disable_with => 'Save changes...' %>
+<% end %>
