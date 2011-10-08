@@ -6,13 +6,14 @@
  * require_tree . 
 */
 html,body {
-  background: url(/assets/diagonal-noise.png);
+  margin:  0;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
   height: 100%;
+  background-color: #f8f8f8;
 }
 
-a:visited, a:link {
+a {
   color: #c60;
   text-decoration: none;
 }
@@ -21,22 +22,10 @@ a img {
   border: none;
 }
 
-a {
-  color: #0000FF;
-}
-
 .clear {
   clear: both;
   height: 0;
   overflow: hidden;
-}
-
-#container {
-/*  width: 95%;*/
-  margin: 20px;
-  padding: 0;
-  border: solid 1px black;
-  background-color: #f8f8f8;
 }
 
 #flash_notice, #flash_error, #flash_alert {
@@ -86,17 +75,36 @@ a {
   margin: 0;
 }
 
+#container {
+  min-height: 100%;
+}
+
 #header {
   overflow: hidden;
   padding: 10px 20px 5px 20px;
-  background-color: #ddd;
-  border-bottom: 2px solid black;
+  background-color: #CC9E61;
+  border-bottom: 3px solid black;
 }
 
-#nav {
+ul#nav {
   float: right;
   font-size: 8pt;
-  padding-top: 6px;
+  margin: 6px 0 0 0;
+  padding: 0;
+  border: 1px solid black;
+}
+
+ul#nav li {
+  background-color: #d8d8d8;
+  list-style: none;
+  float: left;
+  padding: 5px;
+  margin: 0;
+  border-right: 1px solid black;
+}
+
+ul#nav li:last-child {
+  border-right: 0px;
 }
 
 #brand h1 {
@@ -109,13 +117,32 @@ a {
   float: left;
 }
 
-#brand a:link, #brand a:visited {
+#header a:link, #header a:visited {
   color: black;
   text-decoration: none;
 }
 
 #main {
-  padding: 5px 20px;
+  overflow: auto;
+  padding: 5px 20px 30px 20px;
+}
+
+#footer {
+  margin-top: -25px;
+  height: 25px;
+  clear: both;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 8pt;
+}
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
 }
 
 #spinner {
@@ -162,11 +189,4 @@ a {
   text-align: right;
   font-size: 7pt;
   color: gray;
-}
-
-#footer {
-  text-align: center;
-  font-size: 8pt;
-  margin-top: 100px;
-  margin-bottom: 10px;
 }

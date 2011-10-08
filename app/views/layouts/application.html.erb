@@ -13,16 +13,15 @@
     <div id="container">
       <div id="header">
         <div id="brand"><%= content_tag :h1, link_to("Tweet Later", root_path) %></div>
-        <div id="nav">
+        <ul id="nav">
           <% if current_user %>
-            <%= link_to "Archive", root_path %> &middot;
-            <%= link_to "Settings", settings_path %> &middot;
-            <%= link_to "Log out", signout_path %><br>
-            Logged in as <%= current_user.twitter_handle %> 
+            <li><%= content_tag :span, link_to("Archive", root_path), :class => 'navopt' %></li>
+            <li><%= content_tag :span, link_to("Settings", settings_path), :class => 'navopt' %></li>
+            <li><%= content_tag :span, link_to("Log out #{current_user.twitter_handle}", signout_path), :class => 'navopt' %></li>
           <% else %>
-            <%= link_to "Connect via Twitter", root_path + 'auth/twitter' %>
+            <li> <%= content_tag :span, link_to("Connect via Twitter", root_path + 'auth/twitter'), :class => 'navopt' %></li>
           <% end %>
-        </div>
+        </ul>
       </div>
 
       <div id="main">
@@ -32,10 +31,9 @@
         <%= content_tag :h3, yield(:title) if show_title? %>
         <%= yield %>        
       </div>
-      
-      <div id="footer">
-        Built by <a href="http://twitter.com/joostschuur">@jooostschuur</a>
-      </div>
+    </div>
+    <div id="footer">
+      Built by <a href="http://twitter.com/joostschuur">@jooostschuur</a>
     </div>
   </body>
 </html>

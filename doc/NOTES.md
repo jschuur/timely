@@ -10,3 +10,4 @@ BUGS
 ====
 
 * Why won't 'http://plus.joostschuur.com shorten?
+* Date sometimes doesn't get set
