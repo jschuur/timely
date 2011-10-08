@@ -13,6 +13,11 @@ gem 'bitly'
 gem 'nokogiri'
 gem 'rinku'
 
+# JavaScript runtime for Rails 3.1 asset compilation
+group :production do
+  gem 'therubyracer'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
