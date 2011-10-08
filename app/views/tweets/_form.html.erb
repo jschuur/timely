@@ -13,5 +13,11 @@
     <span id="charcount">140 characters left</span>
   </p>
 
+  <p>
+    <%= f.label :scheduled_date, "Scheduled Date" %><br>
+    <%= f.text_field :scheduled_date %>
+  </p>
+
+
   <%= f.submit "Schedule Tweet", :disable_with => 'Adding...' %>
 <% end %>

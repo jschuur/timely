@@ -1,0 +1,11 @@
+<div class="tweet">
+  <div class="message"><%= raw Rinku.auto_link tweet.message %></div>
+  <% if tweet.long_url && tweet.long_url.size > 0 %>
+    <div class="long_url">Link: <%= raw Rinku.auto_link(tweet.long_url) %></div>
+  <% end %>
+  <div class="tweet_options">
+    <%= raw "#{tweet.scheduled_date.strftime("%D %I:%M%P")} &middot; " if tweet.scheduled_date %>
+    <%= link_to "edit", edit_tweet_path(tweet) %> &middot;
+    <%= link_to "delete", destroy_tweet_path(tweet), :confirm => "Delete the tweet '#{tweet.message}'?" %>
+  </div>
+</div>

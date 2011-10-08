@@ -154,6 +154,7 @@ GEM
     rdoc (3.9.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rinku (1.2.2)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
@@ -204,6 +205,7 @@ DEPENDENCIES
   nokogiri
   omniauth
   rails (= 3.1.0)
+  rinku
   sass-rails (~> 3.1.0)
   turn
   twitter

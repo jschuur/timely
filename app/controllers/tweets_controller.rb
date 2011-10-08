@@ -12,8 +12,10 @@ class TweetsController < ApplicationController
       @tweet.long_url = params[:url]
       @tweet.message = "#{title} #{short_url}"
     end
+
+    @upcoming_tweets = current_user.tweets.pending if current_user
   end
-  
+
   def create
     if current_user
       current_user.tweets.create(params[:tweet])
@@ -21,6 +23,20 @@ class TweetsController < ApplicationController
     else
       redirect_to root_path, :alert => "You must be logged in via Twitter for that."
     end
+  end
+
+  def edit
+    @tweet = Tweet.find(params[:id])
+    render 'index'
+  end
+
+  def update
+
+  end
+
+  def destroy
+    Tweet.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   def shorten

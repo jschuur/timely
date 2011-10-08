@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-    <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag "application" %>
+    <title>Tweet Later</title>
+    <%= stylesheet_link_tag "application", "jquery-ui", "timepicker" %>
+    <link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+    <%= javascript_include_tag "application", "timepicker" %>
     <%= javascript_include_tag params[:controller] if CONTROLLER_SPECIFIC_JAVASCRIPT.include?(params[:controller]) %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
@@ -11,22 +12,26 @@
   <body>
     <div id="container">
       <div id="header">
-        <% if current_user %>
-          <%= link_to "Home", root_path %> &middot;
-          <%= link_to "Archive", root_path %> &middot;
-          <%= link_to "Settings", settings_path %> &middot;
-          <%= link_to "Log out", signout_path %><br>
-          Logged in as <%= current_user.twitter_handle %> 
-        <% else %>
-          <%= link_to "Connect via Twitter", root_path + 'auth/twitter' %>
-        <% end %>
+        <div id="brand"><%= content_tag :h1, link_to("Tweet Later", root_path) %></div>
+        <div id="nav">
+          <% if current_user %>
+            <%= link_to "Archive", root_path %> &middot;
+            <%= link_to "Settings", settings_path %> &middot;
+            <%= link_to "Log out", signout_path %><br>
+            Logged in as <%= current_user.twitter_handle %> 
+          <% else %>
+            <%= link_to "Connect via Twitter", root_path + 'auth/twitter' %>
+          <% end %>
+        </div>
       </div>
 
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
+      <div id="main">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+        <%= content_tag :h3, yield(:title) if show_title? %>
+        <%= yield %>        
+      </div>
     </div>
   </body>
 </html>

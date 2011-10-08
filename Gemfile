@@ -11,6 +11,7 @@ gem 'omniauth'
 gem 'nifty-generators'
 gem 'bitly'
 gem 'nokogiri'
+gem 'rinku'
 
 # Gems used only for assets and not required
 # in production environments by default.

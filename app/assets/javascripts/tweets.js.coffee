@@ -19,10 +19,17 @@ $ ->
       if data.error
         $("#shortenerr").html(data.error).show()
       else
-        $("#shorten_error").hide()
+        $("#shortenerr").hide()
         $("#tweet_message").val(data.title + ' ' + data.short_url)
         $("#tweet_long_url").val(data.long_url)
         update_count()
     )
   )
 
+  $('#tweet_scheduled_date').datetimepicker({
+  	ampm: true
+  	stepMinute: 5
+  	minuteGrid: 10
+  	hourGrid: 4
+  	hour: 8
+  })

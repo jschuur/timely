@@ -1,10 +1,18 @@
-<% title 'Tweet Later' %>
-
-
 <% if current_user %>
-  <h3>New Tweet</h3>
+  <h3>Schedule a new tweet</h3>
 
   <%= render :partial => 'form' %>
+
+  <h3>Pending tweets</h3>
+
+  <% if @upcoming_tweets.empty? %>
+    <i>No upcoming tweets currently scheduled.</i>
+  <% else %>
+    <div id="upcoming_tweets">
+      <%= render @upcoming_tweets %>
+    </div>
+  <% end %>
 <% else %>
-  <i>Connect to your Twitter account to view and schedule tweets.</i>
+  <h3>Welcome</h3>
+  <i><a href="auth/twitter">Connect</a> to your Twitter account to view and schedule tweets.</i>
 <% end %>

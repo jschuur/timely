@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       if new_user
         redirect_to settings_path, :notice => "Welcome #{user.twitter_handle}. Update optional settings below."
       else
-        redirect_to root_path, :notice => "Logged in as #{user.twitter_handle}."
+        redirect_to root_path
       end
     else
       redirect_to root_path, :alert => "Unable to log you in."
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
 
-    redirect_to root_path, :notice => "You've been logged out."
+    redirect_to root_path
   end
 
   def error
