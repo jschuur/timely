@@ -8,7 +8,9 @@ class SessionsController < ApplicationController
         user.twitter_token = auth['credentials']['token']
         user.twitter_secret = auth['credentials']['token']
 
+        user.access_token = ActiveSupport::SecureRandom::hex(32)
         user.save
+
         new_user = true
       end
 

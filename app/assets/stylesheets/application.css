@@ -36,7 +36,6 @@ a {
   margin: 20px;
   padding: 0;
   border: solid 1px black;
-  min-height: 800px;
   background-color: #f8f8f8;
 }
 
@@ -163,4 +162,11 @@ a {
   text-align: right;
   font-size: 7pt;
   color: gray;
+}
+
+#footer {
+  text-align: center;
+  font-size: 8pt;
+  margin-top: 100px;
+  margin-bottom: 10px;
 }
