@@ -16,3 +16,7 @@
   
   <%= f.submit "Save changes", :disable_with => 'Save changes...' %>
 <% end %>
+
+<h3>Bookmarklet</h3>
+
+Use this <a href="javascript:(function(){window.open('<%= root_url %>?url='+encodeURIComponent(location.href)+'&access_token=<%= current_user.access_token %>')})()">tweet later</a> bookmarklet to schedule tweets for the <%= current_user.twitter_handle %> account.
