@@ -18,10 +18,6 @@ a {
   text-decoration: none;
 }
 
-a img {
-  border: none;
-}
-
 .clear {
   clear: both;
   height: 0;
@@ -91,16 +87,21 @@ ul#nav {
   font-size: 8pt;
   margin: 6px 0 0 0;
   padding: 0;
-  border: 1px solid black;
+  border: 1px solid #BBB;
+  border-top-color: #CCC;
+  border-bottom-color: #A0A0A0;
 }
 
 ul#nav li {
-  background-color: #d8d8d8;
+/*  background-color: #d8d8d8;*/
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F9F9F9', endColorstr='#E3E3E3');
+  background: -webkit-gradient(linear, 0% 40%, 0% 70%, from(#F9F9F9), to(#E3E3E3));
+  background: -moz-linear-gradient(top,  #F9F9F9,  #E3E3E3);
   list-style: none;
   float: left;
   padding: 5px;
   margin: 0;
-  border-right: 1px solid black;
+  border-right: 1px solid #bbb;
 }
 
 ul#nav li:last-child {

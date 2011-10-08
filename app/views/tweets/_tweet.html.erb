@@ -6,6 +6,6 @@
   <div class="tweet_options">
     <%= raw "#{tweet.scheduled_date.strftime("%m/%d/%y %I:%M%P")} &middot; " if tweet.scheduled_date %>
     <%= link_to "edit", edit_tweet_path(tweet) %> &middot;
-    <%= link_to "delete", destroy_tweet_path(tweet), :confirm => "Delete the tweet '#{tweet.message}'?" %>
+    <%= link_to "delete", tweet, :confirm => "Delete the tweet '#{tweet.message}'?", :method => :delete %>
   </div>
 </div>
