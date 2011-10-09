@@ -17,5 +17,5 @@ production:
   pool: 5
   hostname: localhost
   database: rails_prod_tweetlater
-  username: rails
-  password: m}iK*bTqdfqLu4X2IDzRiWhas
+  username: tweetlater
+  password: RqmZ2HZ.wKqm-yz6gPVH
