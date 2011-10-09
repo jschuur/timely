@@ -7,7 +7,8 @@
 */
 html,body {
   margin:  0;
-  font-family: Verdana, Helvetica, Arial;
+/*  font-family: Verdana, Helvetica, Arial;*/
+  font-family: 'Droid Sans', sans-serif;
   font-size: 14px;
   height: 100%;
   background-color: #f8f8f8;
@@ -71,6 +72,10 @@ a {
   margin: 0;
 }
 
+h3 {
+  font-family: 'Varela', sans-serif;
+}
+
 #container {
   min-height: 100%;
 }
@@ -111,7 +116,7 @@ ul#nav li:last-child {
 #brand h1 {
   margin: 0;
   font-size: 28pt;
-  font-family: 'Aclonica', cursive;
+  font-family: 'Aclonica', sans-serif;
 }
 
 #brand {
