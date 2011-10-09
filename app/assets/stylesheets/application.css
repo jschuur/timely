@@ -191,3 +191,11 @@ body:before {
   font-size: 7pt;
   color: gray;
 }
+
+.status_sent a {
+  color: green;
+}
+
+.status_error {
+  color: red;
+}

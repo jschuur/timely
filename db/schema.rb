@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111008200355) do
+ActiveRecord::Schema.define(:version => 20111009054701) do
 
   create_table "tweets", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20111008200355) do
     t.datetime "scheduled_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tweet_uid"
+    t.string   "error"
   end
 
   create_table "users", :force => true do |t|
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20111008200355) do
     t.string   "bitly_username"
     t.string   "bitly_api_key"
     t.string   "access_token"
+    t.string   "time_zone"
   end
 
 end

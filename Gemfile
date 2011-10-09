@@ -8,10 +8,10 @@ gem 'rails', '3.1.0'
 gem 'mysql2'
 gem 'twitter'
 gem 'omniauth'
-gem 'nifty-generators'
 gem 'bitly'
 gem 'nokogiri'
 gem 'rinku'
+gem 'whenever'
 
 # JavaScript runtime for Rails 3.1 asset compilation
 group :production do

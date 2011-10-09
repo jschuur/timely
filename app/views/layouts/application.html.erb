@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tweet Later</title>
+    <title><%= APP_NAME %></title>
     <%= stylesheet_link_tag "application", "jquery-ui", "timepicker" %>
     <link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "application", "timepicker" %>
@@ -12,10 +12,10 @@
   <body>
     <div id="container">
       <div id="header">
-        <div id="brand"><%= content_tag :h1, link_to("Tweet Later", root_path) %></div>
+        <div id="brand"><%= content_tag :h1, link_to(APP_NAME, root_path) %></div>
         <ul id="nav">
           <% if current_user %>
-            <li><%= content_tag :span, link_to("Archive", root_path), :class => 'navopt' %></li>
+            <li><%= content_tag :span, link_to("Archive", archive_path), :class => 'navopt' %></li>
             <li><%= content_tag :span, link_to("Settings", settings_path), :class => 'navopt' %></li>
             <li><%= content_tag :span, link_to("Log out #{current_user.twitter_handle}", signout_path), :class => 'navopt' %></li>
           <% else %>
@@ -29,7 +29,7 @@
           <%= content_tag :div, msg, :id => "flash_#{name}" %>
         <% end %>
         <%= content_tag :h3, yield(:title) if show_title? %>
-        <%= yield %>        
+        <%= yield %>
       </div>
     </div>
     <div id="footer">

@@ -6,6 +6,10 @@
     <%= f.text_field :email_address %>
   </p>
   <p>
+    <%= f.label :time_zone, "Time zone" %><br>
+    <%= time_zone_select("user", :time_zone, ActiveSupport::TimeZone.us_zones) %>
+  </p>
+  <p>
     <%= f.label :bitly_api_key, "Bit.ly user name " %><br>
     <%= f.text_field :bitly_username %>
   </p>

@@ -6,6 +6,7 @@ Tweetlater::Application.routes.draw do
   match "signout" => "sessions#destroy", :as => :signout
   match "settings" => "users#edit", :as => :settings
   match "tweets/shorten" => "tweets#shorten", :as => :shorten_link
+  match "archive" => "tweets#archive", :as => :archive
 
   resources :tweets, :users
 end

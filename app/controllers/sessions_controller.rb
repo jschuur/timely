@@ -4,14 +4,16 @@ class SessionsController < ApplicationController
 
     if user = User.find_or_initialize_by_twitter_uid(auth['uid'])
       if user.new_record?
+        new_user = true
+
         user.twitter_handle = auth['user_info']['nickname']
         user.twitter_token = auth['credentials']['token']
-        user.twitter_secret = auth['credentials']['token']
+        user.twitter_secret = auth['credentials']['secret']
 
+        user.time_zone = auth['extra']['user_hash']['time_zone']
         user.access_token = ActiveSupport::SecureRandom::hex(32)
-        user.save
 
-        new_user = true
+        user.save
       end
 
       session[:user_id] = user.id

@@ -2,6 +2,7 @@ require 'uri'
 require 'open-uri'
 
 class TweetsController < ApplicationController
+  before_filter :set_timezone
   respond_to :json, :only => [ :shorten ]
   
   def index
@@ -18,6 +19,7 @@ class TweetsController < ApplicationController
 
   def create
     if current_user
+      Time.zone = current_user.time_zone
       current_user.tweets.create(params[:tweet])
       redirect_to root_path, :notice => "New tweet scheduled."
     else
@@ -59,6 +61,14 @@ class TweetsController < ApplicationController
       end
     end
   end
+  
+  def archive
+    if current_user
+      @archived_tweets = current_user.tweets.archived
+    else
+      redirect_to root_path, :alert => "You must be logged in for that."
+    end
+  end
 
   private
 
@@ -71,5 +81,9 @@ class TweetsController < ApplicationController
     short_url = bitly.shorten(URI.encode(url)).short_url
 
     [title, short_url, url]
+  end
+  
+  def set_timezone
+    Time.zone = current_user.time_zone if current_user && current_user.time_zone
   end
 end

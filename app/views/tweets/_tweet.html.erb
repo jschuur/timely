@@ -4,8 +4,17 @@
     <div class="long_url">Link: <%= raw Rinku.auto_link(tweet.long_url) %></div>
   <% end %>
   <div class="tweet_options">
-    <%= raw "#{tweet.scheduled_date.strftime("%m/%d/%y %I:%M%P")} &middot; " if tweet.scheduled_date %>
-    <%= link_to "edit", edit_tweet_path(tweet) %> &middot;
-    <%= link_to "delete", tweet, :confirm => "Delete the tweet '#{tweet.message}'?", :method => :delete %>
+    <% if tweet.status == 'pending' %>
+      <%= raw "#{tweet.scheduled_date.strftime("%m/%d/%y %I:%M%P")} &middot; " if tweet.scheduled_date %>
+      <%= link_to "edit", edit_tweet_path(tweet) %> &middot;
+      <%= link_to "delete", tweet, :confirm => "Delete the tweet '#{tweet.message}'?", :method => :delete %>
+    <% else %>
+      <% if tweet.status == 'sent' %>
+      Status: <span class="status_sent"><%= link_to "sent", "https://twitter.com/#!/#{tweet.user.twitter_handle}/status/#{tweet.tweet_uid}" %></span>
+      <% else %>
+        Status: <span class="status_<%= tweet.status %>"><%= tweet.status %></span>          
+      <% end %>
+      (<%= tweet.updated_at.strftime("%m/%d/%y %I:%M%P") %>)
+    <% end %>
   </div>
 </div>
