@@ -3,12 +3,11 @@ TODO
 
 * Require tweet message
 * Allow tweet editing
-* List error if tweet couldn't be sent (in hover text?)
 * Better redirect to root if not logged in (via filter)
 * Twitter avatar in header
-* textarea box with JS bookmarklet code to copy & paste for iOS
 * red font in error if tweet is too long
 * Manual toggle to retry tweet
+* Instead of quick pick button, default scheduled_date to it? Settings checkbox option for that (on by default)?
 * pagination for archive
 * Quick 'tweet now' link from pending list
 * Set a default scheduling method via settings
@@ -26,6 +25,7 @@ BUGS
 * iPad won't log into martiansoil when I connect via Twitter
 * short_url field not set
 * Extra long URLs go beyond tweet box width
+* Clicking reset button doesn't update character count
 
 jschuur, R_21a28a9f682787d1b1b47d0eb29e6492, dev: e2478ace01b335b1de8020bafa2784ebed8906769feed539615401b8098acfc2, prod:0025cc3e1ac67a8ca8a770d8d177442eecd15ae7711085ba6353548d167a2ce4
 jschuurtest, R_c71a995c0506d836629b8a8d35214387, dev: b1b3cbb3c24f7d34038354cfed20857c5e594012979e21d9232c1c0720f6a021, 5f478f5ddb007b594e6d152832e997765a240a6c7c98e98d0d09256f7d4d42f8

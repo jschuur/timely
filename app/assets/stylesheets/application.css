@@ -77,9 +77,9 @@ a {
 
 #header {
   overflow: hidden;
-  padding: 10px 20px 5px 20px;
-  background-color: #CC9E61;
-  border-bottom: 3px solid black;
+  padding: 10px 20px 5px 80px;
+  background-color: #A2B09D;
+  border-bottom: 8px solid #D2382C;
 }
 
 ul#nav {
@@ -125,7 +125,7 @@ ul#nav li:last-child {
 
 #main {
   overflow: auto;
-  padding: 5px 20px 30px 20px;
+  padding: 5px 20px 30px 80px;
 }
 
 #footer {
@@ -133,7 +133,7 @@ ul#nav li:last-child {
   height: 25px;
   clear: both;
   text-align: right;
-  padding-right: 10px;
+  padding-right: 20px;
   font-size: 8pt;
 }
 
