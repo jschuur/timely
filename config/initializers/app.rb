@@ -9,5 +9,5 @@ else
 end
 
 
-CONTROLLER_SPECIFIC_JAVASCRIPT = %w(tweets)
+CONTROLLER_SPECIFIC_JAVASCRIPT = %w(tweets users)
 

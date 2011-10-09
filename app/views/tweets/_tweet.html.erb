@@ -10,9 +10,9 @@
       <%= link_to "delete", tweet, :confirm => "Delete the tweet '#{tweet.message}'?", :method => :delete %>
     <% else %>
       <% if tweet.status == 'sent' %>
-      Status: <span class="status_sent"><%= link_to "sent", "https://twitter.com/#!/#{tweet.user.twitter_handle}/status/#{tweet.tweet_uid}" %></span>
+        Status: <span class="status_sent"><%= link_to "sent", "https://twitter.com/#!/#{tweet.user.twitter_handle}/status/#{tweet.tweet_uid}" %></span>
       <% else %>
-        Status: <span class="status_<%= tweet.status %>"><%= tweet.status %></span>          
+        Status: <span class="status_<%= tweet.status %>" <%= " title='#{tweet.error}'" if tweet.error %>><%= tweet.status %></span>
       <% end %>
       (<%= tweet.updated_at.strftime("%m/%d/%y %I:%M%P") %>)
     <% end %>
