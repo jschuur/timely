@@ -11,6 +11,7 @@ $ ->
       $("#charcount").addClass('charwarning').html((charCount - 140) + ' character too long');
 
   $('#tweet_message').keyup(update_count)
+  update_count()
 
   $(".shorten").click( ->
     $("#spinner").show()
@@ -28,6 +29,8 @@ $ ->
 
   $('#tweet_scheduled_date').datetimepicker({
   	ampm: true
+  	dateFormat: 'yy-mm-dd'
+  	timeFormat: 'hh:mmTT'
   	stepMinute: 5
   	minuteGrid: 10
   	hourGrid: 4
