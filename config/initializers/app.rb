@@ -8,6 +8,8 @@ else
   TWITTER_SECRET = '4WQpXJjT45ov0NrEAprgSb762nFkhQvbflfDBcbhpk'
 end
 
+BOXCAR_KEY = 'rgmAM70kDnlbAs3aHBfV'
+BOXCAR_SECRET = '9eg3AcLKySRwJyVPOyHKEvJma1GOleZlPAvgsiwb'
 
 CONTROLLER_SPECIFIC_JAVASCRIPT = %w(tweets users)
 

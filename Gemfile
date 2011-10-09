@@ -12,6 +12,7 @@ gem 'bitly'
 gem 'nokogiri'
 gem 'rinku'
 gem 'whenever'
+gem 'boxcar_api'
 
 # JavaScript runtime for Rails 3.1 asset compilation
 group :production do

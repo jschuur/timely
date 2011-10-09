@@ -7,6 +7,7 @@ class Tweet < ActiveRecord::Base
   
   def self.send_tweets
     log = Logger.new("#{Rails.root}/log/tweets.log")
+    boxcar = BoxcarAPI::Provider.new(BOXCAR_KEY, BOXCAR_SECRET)
 
     Tweet.overdue.each do |tweet|
       if user = tweet.user
@@ -22,9 +23,11 @@ class Tweet < ActiveRecord::Base
           response = client.update(tweet.message)
         rescue Exception => e
           # TODO: Retry a certain number of times
+          boxcar.notify(user.email_address, "Problem sending #{user.twitter_handle} tweet '#{tweet.message}'.")
           log.error "[#{Time.now}] Unable to send tweet ID ##{tweet.id} for #{user.twitter_handle}: #{e.message}"
           tweet.update_attributes({ :status => 'error', :error => e.message })
         else
+          boxcar.notify(user.email_address, "Successfullu sent #{user.twitter_handle} tweet '#{tweet.message}'.")
           log.info "[#{Time.now}] Successfully sent tweet ID ##{tweet.id} for #{user.twitter_handle}"
           tweet.update_attributes({ :status => 'sent', :tweet_uid => response.id })
         end
