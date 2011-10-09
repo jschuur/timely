@@ -27,6 +27,10 @@ $ ->
     )
   )
 
+  $(".quickpick").click( ->
+    $("#tweet_scheduled_date").val($(this).attr("data-timestamp"))
+  )
+
   $('#tweet_scheduled_date').datetimepicker({
   	ampm: true
   	dateFormat: 'yy-mm-dd'

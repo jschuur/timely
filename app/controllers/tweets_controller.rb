@@ -15,6 +15,15 @@ class TweetsController < ApplicationController
     end
 
     @upcoming_tweets = current_user.tweets.pending if current_user
+
+    if @upcoming_tweets.empty?
+      d = Date.today + (Time.now.hour > current_user.quick_pick_start ? 1 : 0).days
+      t = Time.new(d.year, d.month, d.day, current_user.quick_pick_start, 0)
+    else
+      t = @upcoming_tweets.last.scheduled_date + current_user.quick_pick_interval.minutes
+    end
+
+    @quickpick = t.strftime("%Y-%m-%d %I:%M%p")
   end
 
   def create

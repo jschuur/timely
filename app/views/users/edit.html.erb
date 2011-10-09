@@ -17,6 +17,14 @@
     <%= f.label :bitly_api_key, "Bit.ly API key" %><br>
     <%= f.text_field :bitly_api_key %>
   </p>
+  <p>
+    <%= f.label :quick_pick_start, "Quick pick start" %><br>
+    <%= f.select :quick_pick_start, options_for_select(hourly_select_options, @user.quick_pick_start) %>
+  </p>
+  <p>
+    <%= f.label :quick_pick_interval, "Quick pick interval" %><br>
+    <%= f.select :quick_pick_interval, options_for_select([["5 mins", 5], ["10 mins", 10], ["15 mins", 15], ["20 mins", 20], ["30 mins", 30], ["1 hour", 60], ["90 mins", 90], ["2 hours", 120], ["4 hours", 240]], @user.quick_pick_interval)%>
+  </p>
   
   <%= f.submit "Save changes", :disable_with => 'Save changes...' %>
 <% end %>

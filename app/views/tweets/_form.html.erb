@@ -16,6 +16,7 @@
   <p>
     <%= f.label :scheduled_date, "Scheduled Date" %><br>
     <%= f.text_field :scheduled_date %>
+    <%= content_tag :button, "quick pick", :class => 'quickpick', :type => 'button', "data-timestamp" => @quickpick %>
   </p>
 
 

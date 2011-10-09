@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111009054701) do
+ActiveRecord::Schema.define(:version => 20111009083746) do
 
   create_table "tweets", :force => true do |t|
     t.integer  "user_id"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20111009054701) do
     t.string   "bitly_api_key"
     t.string   "access_token"
     t.string   "time_zone"
+    t.integer  "quick_pick_start",    :default => 7
+    t.integer  "quick_pick_interval", :default => 5
   end
 
 end
