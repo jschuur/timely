@@ -23,6 +23,7 @@ $ ->
         $("#shortenerr").hide()
         $("#tweet_message").val(data.title + ' ' + data.short_url)
         $("#tweet_long_url").val(data.long_url)
+        $("#tweet_short_url").val(data.short_url)
         update_count()
     )
   )

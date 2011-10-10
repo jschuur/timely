@@ -5,6 +5,9 @@ TODO
 * Allow tweet editing
 * Better redirect to root if not logged in (via filter)
 * Twitter avatar in header
+* 960 grid
+* Boxcar on/off checkbox, subscribe on activation, optional boxcar email address.
+* New name: Tweet Assist
 * red font in error if tweet is too long
 * Manual toggle to retry tweet
 * Instead of quick pick button, default scheduled_date to it? Settings checkbox option for that (on by default)?
@@ -16,14 +19,17 @@ TODO
 * Email confirmation on tweet
 * Send prowl notice
 * Display stats
+* Notify on popular clicks on link
 * Track retweets (old style and new)
+* Integrate tweet archiving, add search of archive
+* Track retweets, notify on popular retweets
 
 BUGS
 ====
 
 * Why won't 'http://plus.joostschuur.com shorten?
 * iPad won't log into martiansoil when I connect via Twitter
-* short_url field not set
+* consistently style background on first tweet in list (compare pending vs. archive)
 * Extra long URLs go beyond tweet box width
 * Clicking reset button doesn't update character count
 

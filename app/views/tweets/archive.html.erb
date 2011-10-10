@@ -1,6 +1,8 @@
 <h3>Archived tweets</h3>
 <% if @archived_tweets.size > 0 %>
-  <%= render @archived_tweets %>
+  <div id="tweets">
+    <%= render @archived_tweets %>
+  </div>
 <% else %>
   None yet. Schedule some tweets and they'll appear here after they've been sent.
 <% end %>

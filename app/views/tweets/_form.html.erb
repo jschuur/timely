@@ -19,6 +19,7 @@
     <%= content_tag :button, "quick pick", :class => 'quickpick', :type => 'button', "data-timestamp" => @quickpick %>
   </p>
 
+  <%= f.hidden_field :short_url %>
 
   <%= f.submit "Schedule Tweet", :disable_with => 'Adding...' %>
   <%= submit_tag("Clear Form", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>

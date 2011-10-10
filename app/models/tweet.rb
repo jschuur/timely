@@ -4,6 +4,7 @@ class Tweet < ActiveRecord::Base
   scope :pending, where(:status => 'pending').order(:scheduled_date)
   scope :archived, where("status != 'pending'").order("updated_at DESC")
   scope :overdue, lambda { where("scheduled_date < ? AND status='pending'", Time.now.utc) }
+  scope :recent, lambda { where("") }
   
   def self.send_tweets
     log = Logger.new("#{Rails.root}/log/tweets.log")
@@ -29,11 +30,22 @@ class Tweet < ActiveRecord::Base
         else
           boxcar.notify(user.email_address, "Successfullu sent #{user.twitter_handle} tweet '#{tweet.message}'.")
           log.info "[#{Time.now}] Successfully sent tweet ID ##{tweet.id} for #{user.twitter_handle}"
-          tweet.update_attributes({ :status => 'sent', :tweet_uid => response.id })
+          tweet.update_attributes({ :status => 'sent', :tweet_uid => response.id, sent_date => Time.now })
         end
       else
         log.error "[#{Time.now}] Invalid user ID ##{tweet.user_id} for tweet ID ##{tweet.id}"
         tweet.update_attribute(:status, 'error')
+      end
+    end
+  end
+
+  def self.update_stats
+    where(:status => 'sent').each do |tweet|
+      if tweet.short_url
+        bitly = Bitly.new(tweet.user.bitly_username, tweet.user.bitly_api_key)
+        res = bitly.info(tweet.short_url)
+
+        tweet.update_attributes({ :user_clicks => res.user_clicks, :global_clicks => res.global_clicks }) unless res.error
       end
     end
   end
