@@ -45,7 +45,7 @@ class Tweet < ActiveRecord::Base
         bitly = Bitly.new(tweet.user.bitly_username, tweet.user.bitly_api_key)
         res = bitly.info(tweet.short_url)
 
-        tweet.update_attributes({ :user_clicks => res.user_clicks, :global_clicks => res.global_clicks }) unless res.error
+        tweet.update_attributes({ :user_clicks => res.user_clicks, :global_clicks => res.global_clicks }) unless defined?(res.error)
       end
     end
   end
