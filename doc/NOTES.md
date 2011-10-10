@@ -17,6 +17,7 @@ TODO
 * Quickpick scheduling type when adding tweet: 'fixed gap after hour' (5 mins between tweets after 7 AM e.g.) or 'evenly spread throughout the day' (but between certain hours). Optionally set quickpick to default for next time.
 * Modal dialog box with hotkey to add new tweet
 * Email confirmation on tweet
+* 'send now' tweet button
 * Send prowl notice
 * Display stats
 * Notify on popular clicks on link
@@ -31,6 +32,7 @@ BUGS
 * iPad won't log into martiansoil when I connect via Twitter
 * consistently style background on first tweet in list (compare pending vs. archive)
 * Extra long URLs go beyond tweet box width
+* Archived tweets need a consistent date field to order by (set sent_date even on errors)
 * Clicking reset button doesn't update character count
 
 jschuur, R_21a28a9f682787d1b1b47d0eb29e6492, dev: e2478ace01b335b1de8020bafa2784ebed8906769feed539615401b8098acfc2, prod:0025cc3e1ac67a8ca8a770d8d177442eecd15ae7711085ba6353548d167a2ce4

@@ -2,7 +2,7 @@ class Tweet < ActiveRecord::Base
   belongs_to :user
 
   scope :pending, where(:status => 'pending').order(:scheduled_date)
-  scope :archived, where("status != 'pending'").order("updated_at DESC")
+  scope :archived, where("status != 'pending'").order("sent_date DESC")
   scope :overdue, lambda { where("scheduled_date < ? AND status='pending'", Time.now.utc) }
   scope :recent, lambda { where("") }
   
@@ -30,7 +30,7 @@ class Tweet < ActiveRecord::Base
         else
           boxcar.notify(user.email_address, "Successfullu sent #{user.twitter_handle} tweet '#{tweet.message}'.")
           log.info "[#{Time.now}] Successfully sent tweet ID ##{tweet.id} for #{user.twitter_handle}"
-          tweet.update_attributes({ :status => 'sent', :tweet_uid => response.id, sent_date => Time.now })
+          tweet.update_attributes({ :status => 'sent', :tweet_uid => response.id, :sent_date => Time.now })
         end
       else
         log.error "[#{Time.now}] Invalid user ID ##{tweet.user_id} for tweet ID ##{tweet.id}"
