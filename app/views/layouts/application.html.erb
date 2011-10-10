@@ -7,6 +7,11 @@
     <%= javascript_include_tag "application", "timepicker" %>
     <%= javascript_include_tag params[:controller] if CONTROLLER_SPECIFIC_JAVASCRIPT.include?(params[:controller]) %>
     <%= csrf_meta_tag %>
+    <!--[if !IE 7]>
+    	<style type="text/css">
+    		#wrap {display:table;height:100%}
+    	</style>
+    <![endif]-->
     <%= yield(:head) %>
   </head>
   <body>

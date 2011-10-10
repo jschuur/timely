@@ -19,6 +19,7 @@ TODO
 * Email confirmation on tweet
 * 'send now' tweet button
 * Send prowl notice
+* remove any utm_ querystring args
 * Display stats
 * Notify on popular clicks on link
 * Track retweets (old style and new)

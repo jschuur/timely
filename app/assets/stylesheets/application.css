@@ -78,6 +78,7 @@ h3 {
 
 #container {
   min-height: 100%;
+  margin-bottom: 25px;
 }
 
 #header {
@@ -130,11 +131,12 @@ ul#nav li:last-child {
 
 #main {
   overflow: auto;
-  padding: 5px 20px 20px 80px;
+  padding: 5px 80px 50px 80px;
 }
 
 #footer {
-  margin-top: -25px;
+  position: relative;
+  margin-top: -50px;
   background-color: #d8d8d8;
   height: 20px;
   clear: both;
