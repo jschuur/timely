@@ -9,14 +9,10 @@ TODO
 * red font in error if tweet is too long
 * Manual toggle to retry tweet
 * Instead of quick pick button, default scheduled_date to it? Settings checkbox option for that (on by default)?
-* pagination for archive
-* Quick 'tweet now' link from pending list
 * Set a default scheduling method via settings
 * Quickpick scheduling type when adding tweet: 'fixed gap after hour' (5 mins between tweets after 7 AM e.g.) or 'evenly spread throughout the day' (but between certain hours). Optionally set quickpick to default for next time.
 * Modal dialog box with hotkey to add new tweet
 * Email confirmation on tweet
-* 'send now' tweet button
-* Send prowl notice
 * remove any utm_ querystring args
 * Display stats
 * Notify on popular clicks on link

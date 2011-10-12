@@ -1,10 +1,10 @@
 <h3>Archived tweets</h3>
 <% if @archived_tweets.size > 0 %>
-  <%= will_paginate @archived_tweets %>
+  <%= will_paginate @archived_tweets, :previous_label => '&#8592; Newer', :next_label => 'Older &#8594;' %>
   <div id="tweets">
     <%= render @archived_tweets %>
   </div>
-  <%= will_paginate @archived_tweets %>
+  <%= will_paginate @archived_tweets, :previous_label => '&#8592; Newer', :next_label => 'Older &#8594;' %>
 <% else %>
   None yet. Schedule some tweets and they'll appear here after they've been sent.
 <% end %>
