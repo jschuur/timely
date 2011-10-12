@@ -20,9 +20,10 @@
         <div id="brand"><%= content_tag :h1, link_to(APP_NAME, root_path) %></div>
         <ul id="nav">
           <% if current_user %>
+            <li><%= content_tag :span, link_to("@#{current_user.twitter_handle}", "http://twitter.com/#{current_user.twitter_handle}"), :class => 'navopt' %></li>
             <li><%= content_tag :span, link_to("Archive", archive_path), :class => 'navopt' %></li>
             <li><%= content_tag :span, link_to("Settings", settings_path), :class => 'navopt' %></li>
-            <li><%= content_tag :span, link_to("Log out #{current_user.twitter_handle}", signout_path), :class => 'navopt' %></li>
+            <li><%= content_tag :span, link_to("Log out", signout_path), :class => 'navopt' %></li>
           <% else %>
             <li> <%= content_tag :span, link_to("Connect via Twitter", root_path + 'auth/twitter'), :class => 'navopt' %></li>
           <% end %>

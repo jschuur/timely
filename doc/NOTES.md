@@ -7,6 +7,7 @@ TODO
 * Boxcar on/off checkbox, subscribe on activation, optional boxcar email address.
 * red font in error if tweet is too long
 * Manual toggle to retry tweet
+* Crop long URLs from div by only displaying first X chars (but showing full URL in mouseover)
 * Instead of quick pick button, default scheduled_date to it? Settings checkbox option for that (on by default)?
 * Set a default scheduling method via settings
 * Quickpick scheduling type when adding tweet: 'fixed gap after hour' (5 mins between tweets after 7 AM e.g.) or 'evenly spread throughout the day' (but between certain hours). Optionally set quickpick to default for next time.
