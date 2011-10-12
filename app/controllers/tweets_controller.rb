@@ -11,6 +11,7 @@ class TweetsController < ApplicationController
       (title, short_url) = shorten_url params[:url]
       
       @tweet.long_url = params[:url]
+      @tweet.short_url = short_url
       @tweet.message = "#{title} #{short_url}"
     end
 
