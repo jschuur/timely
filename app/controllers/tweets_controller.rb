@@ -112,6 +112,12 @@ class TweetsController < ApplicationController
 
   def shorten_url(url)
     url.insert(0, 'http://') unless (url.starts_with?('http://') || url.starts_with?('https://'))
+
+    # Remove Google Adwords gunk
+    (base_url, querystring) = url.split('?')
+    querystring = querystring.split('&').select {|arg| !arg.index('utm_')}.join('&')
+    url = querystring.empty? ? base_url : "#{base_url}?#{querystring}" 
+
     doc = Nokogiri::HTML(open(url))
     title = doc.at_css("title").inner_html
     

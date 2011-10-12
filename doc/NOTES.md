@@ -5,7 +5,6 @@ TODO
 * Better redirect to root if not logged in (via filter)
 * Twitter avatar in header
 * Boxcar on/off checkbox, subscribe on activation, optional boxcar email address.
-* New name
 * red font in error if tweet is too long
 * Manual toggle to retry tweet
 * Instead of quick pick button, default scheduled_date to it? Settings checkbox option for that (on by default)?
@@ -13,7 +12,6 @@ TODO
 * Quickpick scheduling type when adding tweet: 'fixed gap after hour' (5 mins between tweets after 7 AM e.g.) or 'evenly spread throughout the day' (but between certain hours). Optionally set quickpick to default for next time.
 * Modal dialog box with hotkey to add new tweet
 * Email confirmation on tweet
-* remove any utm_ querystring args
 * Display stats
 * Notify on popular clicks on link
 * Track retweets (old style and new)
@@ -26,6 +24,7 @@ BUGS
 * Why won't 'http://plus.joostschuur.com shorten?
 * iPad won't log into martiansoil when I connect via Twitter
 * Twitter connect broken?
+* URLs with single quote in them break bitly and/or page
 * Don't display date as UTC when editing
 * Archived tweets need a consistent date field to order by (set sent_date even on errors)
 * Clicking reset button doesn't update character count
