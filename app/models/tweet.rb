@@ -4,13 +4,13 @@ class Tweet < ActiveRecord::Base
   scope :pending, where(:status => 'pending').order(:scheduled_date)
   scope :archived, where("status != 'pending'").order("sent_date DESC")
   scope :overdue, lambda { where("scheduled_date < ? AND status='pending'", Time.now.utc) }
-  scope :recent, lambda { where("") }
+  scope :sent, where(:status => 'sent')
   
   def self.send_tweets
     log = Logger.new("#{Rails.root}/log/tweets.log")
     boxcar = BoxcarAPI::Provider.new(BOXCAR_KEY, BOXCAR_SECRET)
 
-    Tweet.overdue.each do |tweet|
+    Tweet.overdue.includes(&:user).each do |tweet|
       if user = tweet.user
         Twitter.configure do |config|
           config.consumer_key = TWITTER_KEY
@@ -39,16 +39,31 @@ class Tweet < ActiveRecord::Base
     end
   end
 
-  def self.update_stats
-    where(:status => 'sent').includes(:user).each do |tweet|
-      if tweet.short_url && tweet.short_url.size > 0
+  def self.update_stats(since = nil)
+    if since
+      tweets = Tweet.where('sent_date > ?', since)
+    else
+      tweets = Tweet.all
+    end
+
+    tweets.sent.includes(:user).group_by(&:user).each do |user, tweets|
+      if user.bitly_username && user.bitly_api_key
         begin
-          bitly = Bitly.new(tweet.user.bitly_username, tweet.user.bitly_api_key)
+          bitly = Bitly.new(user.bitly_username, user.bitly_api_key)
         rescue
         else
-          res = bitly.info(tweet.short_url)
+          short_urls = tweets.map(&:short_url).compact.select {|t| t.size > 0}
 
-          tweet.update_attributes({ :user_clicks => res.user_clicks, :global_clicks => res.global_clicks }) unless defined?(res.error)
+          # Bitly API takes up to 15 at a time
+          short_urls.in_groups_of(15) do |urls|
+            response = bitly.info(urls.compact)
+
+            unless defined?(response.error)
+              [response].flatten.each do |result|
+                Tweet.update_all({ :user_clicks => result.user_clicks, :global_clicks => result.global_clicks }, :short_url => result.short_url)
+              end
+            end
+          end
         end
       end
     end

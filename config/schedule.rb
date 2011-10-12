@@ -8,3 +8,11 @@
 every 2.minutes do
   runner "Tweet.send_tweets"
 end
+
+every 30.minutes do
+  runner "Tweet.update_stats(1.week.ago)"
+end
+
+every 1.day do
+  runner "Tweet.update_stats"
+end
