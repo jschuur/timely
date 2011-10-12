@@ -43,7 +43,7 @@ class Tweet < ActiveRecord::Base
     if since
       tweets = Tweet.where('sent_date > ?', since)
     else
-      tweets = Tweet.all
+      tweets = Tweet
     end
 
     tweets.sent.includes(:user).group_by(&:user).each do |user, tweets|
