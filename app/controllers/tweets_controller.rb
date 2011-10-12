@@ -87,7 +87,7 @@ class TweetsController < ApplicationController
   
   def archive
     if current_user
-      @archived_tweets = current_user.tweets.archived
+      @archived_tweets = current_user.tweets.archived.page(params[:page])
     else
       redirect_to root_path, :alert => "You must be logged in for that."
     end

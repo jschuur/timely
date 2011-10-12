@@ -5,7 +5,9 @@ class Tweet < ActiveRecord::Base
   scope :archived, where("status != 'pending'").order("sent_date DESC")
   scope :overdue, lambda { where("scheduled_date < ? AND status='pending'", Time.now.utc) }
   scope :sent, where(:status => 'sent')
-  
+
+  self.per_page = 10
+
   def self.send_overdue_tweets
     Tweet.overdue.includes(&:user).each do |tweet|
       tweet.issue_tweet
@@ -62,7 +64,7 @@ class Tweet < ActiveRecord::Base
         log.error "[#{Time.now}] Unable to send tweet ID ##{id} for #{user.twitter_handle}: #{e.message}"
         update_attributes({ :status => 'error', :error => e.message })
       else
-        $boxcar.notify(user.email_address, "Successfullu sent #{user.twitter_handle} tweet '#{message}'.")
+        $boxcar.notify(user.email_address, "Successfully sent #{user.twitter_handle} tweet '#{message}'.")
         log.info "[#{Time.now}] Successfully sent tweet ID ##{id} for #{user.twitter_handle}"
         update_attributes({ :status => 'sent', :tweet_uid => response.id, :sent_date => Time.now })
       end

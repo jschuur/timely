@@ -14,6 +14,7 @@ gem 'rinku'
 gem 'whenever'
 gem 'boxcar_api'
 gem 'css3buttons'
+gem 'will_paginate'
 
 # JavaScript runtime for Rails 3.1 asset compilation
 group :production do

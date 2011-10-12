@@ -184,6 +184,11 @@ body:before {
   overflow: hidden;
 }
 
+#tweets {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 #tweets .tweet:nth-child(odd) {
   background-color: #ddd;
 }
