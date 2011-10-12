@@ -6,36 +6,9 @@ class Tweet < ActiveRecord::Base
   scope :overdue, lambda { where("scheduled_date < ? AND status='pending'", Time.now.utc) }
   scope :sent, where(:status => 'sent')
   
-  def self.send_tweets
-    log = Logger.new("#{Rails.root}/log/tweets.log")
-    boxcar = BoxcarAPI::Provider.new(BOXCAR_KEY, BOXCAR_SECRET)
-
+  def self.send_overdue_tweets
     Tweet.overdue.includes(&:user).each do |tweet|
-      if user = tweet.user
-        Twitter.configure do |config|
-          config.consumer_key = TWITTER_KEY
-          config.consumer_secret = TWITTER_SECRET
-          config.oauth_token = user.twitter_token
-          config.oauth_token_secret = user.twitter_secret
-        end
-
-        begin
-          client = Twitter::Client.new
-          response = client.update(tweet.message)
-        rescue Exception => e
-          # TODO: Retry a certain number of times
-          boxcar.notify(user.email_address, "Problem sending #{user.twitter_handle} tweet '#{tweet.message}'.")
-          log.error "[#{Time.now}] Unable to send tweet ID ##{tweet.id} for #{user.twitter_handle}: #{e.message}"
-          tweet.update_attributes({ :status => 'error', :error => e.message })
-        else
-          boxcar.notify(user.email_address, "Successfullu sent #{user.twitter_handle} tweet '#{tweet.message}'.")
-          log.info "[#{Time.now}] Successfully sent tweet ID ##{tweet.id} for #{user.twitter_handle}"
-          tweet.update_attributes({ :status => 'sent', :tweet_uid => response.id, :sent_date => Time.now })
-        end
-      else
-        log.error "[#{Time.now}] Invalid user ID ##{tweet.user_id} for tweet ID ##{tweet.id}"
-        tweet.update_attribute(:status, 'error')
-      end
+      tweet.issue_tweet
     end
   end
 
@@ -67,5 +40,35 @@ class Tweet < ActiveRecord::Base
         end
       end
     end
+  end
+  
+  def issue_tweet
+    log = Logger.new("#{Rails.root}/log/tweets.log")
+
+    if user
+      Twitter.configure do |config|
+        config.consumer_key = TWITTER_KEY
+        config.consumer_secret = TWITTER_SECRET
+        config.oauth_token = user.twitter_token
+        config.oauth_token_secret = user.twitter_secret
+      end
+
+      begin
+        client = Twitter::Client.new
+        response = client.update(message)
+      rescue Exception => e
+        # TODO: Retry a certain number of times
+        $boxcar.notify(user.email_address, "Problem sending #{user.twitter_handle} tweet '#{message}'.")
+        log.error "[#{Time.now}] Unable to send tweet ID ##{id} for #{user.twitter_handle}: #{e.message}"
+        update_attributes({ :status => 'error', :error => e.message })
+      else
+        $boxcar.notify(user.email_address, "Successfullu sent #{user.twitter_handle} tweet '#{message}'.")
+        log.info "[#{Time.now}] Successfully sent tweet ID ##{id} for #{user.twitter_handle}"
+        update_attributes({ :status => 'sent', :tweet_uid => response.id, :sent_date => Time.now })
+      end
+    else
+      log.error "[#{Time.now}] Invalid user ID ##{user_id} for tweet ID ##{id}"
+      update_attribute(:status, 'error')
+    end    
   end
 end

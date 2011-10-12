@@ -11,5 +11,7 @@ end
 BOXCAR_KEY = 'rgmAM70kDnlbAs3aHBfV'
 BOXCAR_SECRET = '9eg3AcLKySRwJyVPOyHKEvJma1GOleZlPAvgsiwb'
 
+$boxcar = BoxcarAPI::Provider.new(BOXCAR_KEY, BOXCAR_SECRET)
+
 CONTROLLER_SPECIFIC_JAVASCRIPT = %w(tweets users)
 

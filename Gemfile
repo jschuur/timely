@@ -13,6 +13,7 @@ gem 'nokogiri'
 gem 'rinku'
 gem 'whenever'
 gem 'boxcar_api'
+gem 'css3buttons'
 
 # JavaScript runtime for Rails 3.1 asset compilation
 group :production do

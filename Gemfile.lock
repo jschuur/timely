@@ -58,6 +58,8 @@ GEM
       execjs
     coffee-script-source (1.1.2)
     crack (0.3.1)
+    css3buttons (1.0.1)
+      actionpack (>= 3.0.0)
     erubis (2.7.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
@@ -223,6 +225,7 @@ DEPENDENCIES
   boxcar_api
   capistrano
   coffee-rails (~> 3.1.0)
+  css3buttons
   jquery-rails
   mysql2
   nokogiri

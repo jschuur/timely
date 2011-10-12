@@ -15,25 +15,24 @@ class TweetsController < ApplicationController
       @tweet.message = "#{title} #{short_url}"
     end
 
-    if current_user
-      @upcoming_tweets = current_user.tweets.pending
-
-      if @upcoming_tweets.empty?
-        d = Date.today + (Time.now.hour > current_user.quick_pick_start ? 1 : 0).days
-        t = Time.new(d.year, d.month, d.day, current_user.quick_pick_start, 0)
-      else
-        t = @upcoming_tweets.last.scheduled_date + current_user.quick_pick_interval.minutes
-      end
-
-      @quickpick = t.strftime("%Y-%m-%d %I:%M%p")
-    end
+    package_data
   end
 
   def create
     if current_user
       Time.zone = current_user.time_zone
-      current_user.tweets.create(params[:tweet])
-      redirect_to root_path, :notice => "New tweet scheduled."
+
+      if tweet = current_user.tweets.create(params[:tweet])      
+        if params[:commit] == 'Send Now'
+          tweet.update_attribute(:scheduled_date, nil)
+          tweet.issue_tweet
+          redirect_to root_path, :notice => "New tweet has been sent."
+        else
+          redirect_to root_path, :notice => "New tweet scheduled."
+        end
+      else
+        redirect_to root_path, :alert => "Error adding new tweet."
+      end
     else
       redirect_to root_path, :alert => "You must be logged in via Twitter for that."
     end
@@ -41,11 +40,23 @@ class TweetsController < ApplicationController
 
   def edit
     @tweet = Tweet.find(params[:id])
+    package_data
     render 'index'
   end
 
   def update
-
+    @tweet = Tweet.find(params[:id])
+    
+    if @tweet.update_attributes(params[:tweet])
+      if params[:commit] == 'Send Now'
+        tweet.issue_tweet
+        redirect_to root_path, :notice => "New tweet has been sent."
+      else
+        redirect_to root_path, :notice => "New tweet scheduled."
+      end
+    else
+      redirect_to root_path, :alert => 'Problem updating this tweet.'
+    end
   end
 
   def destroy
@@ -83,6 +94,21 @@ class TweetsController < ApplicationController
   end
 
   private
+
+  def package_data
+    if current_user
+      @upcoming_tweets = current_user.tweets.pending
+
+      if @upcoming_tweets.empty?
+        d = Date.today + (Time.now.hour > current_user.quick_pick_start ? 1 : 0).days
+        t = Time.new(d.year, d.month, d.day, current_user.quick_pick_start, 0)
+      else
+        t = @upcoming_tweets.last.scheduled_date + current_user.quick_pick_interval.minutes
+      end
+
+      @quickpick = t.strftime("%Y-%m-%d %I:%M%p")
+    end
+  end
 
   def shorten_url(url)
     url.insert(0, 'http://') unless (url.starts_with?('http://') || url.starts_with?('https://'))

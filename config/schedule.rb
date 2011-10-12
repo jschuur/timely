@@ -6,7 +6,7 @@
 # set :output, "/path/to/my/cron_log.log"
 
 every 2.minutes do
-  runner "Tweet.send_tweets"
+  runner "Tweet.send_overdue_tweets"
 end
 
 every 30.minutes do

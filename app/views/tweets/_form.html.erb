@@ -21,6 +21,7 @@
 
   <%= f.hidden_field :short_url %>
 
-  <%= f.submit "Schedule Tweet", :disable_with => 'Adding...' %>
-  <%= submit_tag("Clear Form", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>
+  <%= primary_button_submit_tag "Schedule Tweet" %>
+  <%= button_submit_tag "Send Now" %>
+  <%= button_submit_tag("Clear Form", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>
 <% end %>

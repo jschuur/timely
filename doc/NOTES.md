@@ -2,10 +2,8 @@ TODO
 ====
 
 * Require tweet message, date
-* Allow tweet editing
 * Better redirect to root if not logged in (via filter)
 * Twitter avatar in header
-* 960 grid
 * Boxcar on/off checkbox, subscribe on activation, optional boxcar email address.
 * New name
 * red font in error if tweet is too long
@@ -32,8 +30,7 @@ BUGS
 * Why won't 'http://plus.joostschuur.com shorten?
 * iPad won't log into martiansoil when I connect via Twitter
 * Twitter connect broken?
-* consistently style background on first tweet in list (compare pending vs. archive)
-* Extra long URLs go beyond tweet box width
+* Don't display date as UTC when editing
 * Archived tweets need a consistent date field to order by (set sent_date even on errors)
 * Clicking reset button doesn't update character count
 
