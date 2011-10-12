@@ -180,6 +180,7 @@ body:before {
   width: 600px;
   border-top: 1px solid #bbb;
   padding: 5px 10px;
+  overflow: hidden;
 }
 
 #tweets .tweet:nth-child(odd) {

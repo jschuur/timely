@@ -40,12 +40,16 @@ class Tweet < ActiveRecord::Base
   end
 
   def self.update_stats
-    where(:status => 'sent').each do |tweet|
-      if tweet.short_url
-        bitly = Bitly.new(tweet.user.bitly_username, tweet.user.bitly_api_key)
-        res = bitly.info(tweet.short_url)
+    where(:status => 'sent').includes(:user).each do |tweet|
+      if tweet.short_url && tweet.short_url.size > 0
+        begin
+          bitly = Bitly.new(tweet.user.bitly_username, tweet.user.bitly_api_key)
+        rescue
+        else
+          res = bitly.info(tweet.short_url)
 
-        tweet.update_attributes({ :user_clicks => res.user_clicks, :global_clicks => res.global_clicks }) unless defined?(res.error)
+          tweet.update_attributes({ :user_clicks => res.user_clicks, :global_clicks => res.global_clicks }) unless defined?(res.error)
+        end
       end
     end
   end
