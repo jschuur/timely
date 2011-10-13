@@ -22,6 +22,7 @@ TODO
 BUGS
 ====
 
+* second physorg link returned title for the first one. Problem with new google adwords removal?
 * Why won't 'http://plus.joostschuur.com shorten?
 * iPad won't log into martiansoil when I connect via Twitter
 * Twitter connect broken?

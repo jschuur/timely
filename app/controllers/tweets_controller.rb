@@ -114,7 +114,6 @@ class TweetsController < ApplicationController
     url.insert(0, 'http://') unless (url.starts_with?('http://') || url.starts_with?('https://'))
 
     # Remove Google Adwords gunk
-    url = 'http://www.physorg.com/news/2011-10-mild-temperature-mars.html?utm_=efkgjhg'
     (base_url, querystring) = url.split('?')
     if querystring
       querystring = querystring.split('&').select {|arg| !arg.index('utm_')}.join('&')
