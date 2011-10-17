@@ -7,12 +7,16 @@ TODO
 * Boxcar on/off checkbox, subscribe on activation, optional boxcar email address.
 * red font in error if tweet is too long
 * Manual toggle to retry tweet
+* AJAX more scroll box.
 * Crop long URLs from div by only displaying first X chars (but showing full URL in mouseover)
 * Instead of quick pick button, default scheduled_date to it? Settings checkbox option for that (on by default)?
 * Set a default scheduling method via settings
+* Import tweets made elsewhere
 * Quickpick scheduling type when adding tweet: 'fixed gap after hour' (5 mins between tweets after 7 AM e.g.) or 'evenly spread throughout the day' (but between certain hours). Optionally set quickpick to default for next time.
 * Modal dialog box with hotkey to add new tweet
 * Email confirmation on tweet
+* Daily stats under archive div blocks.
+* In archive, use different bgcolors for status instead of gray. Alternate different greens and reds.
 * Display stats
 * Notify on popular clicks on link
 * Track retweets (old style and new)

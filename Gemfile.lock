@@ -207,6 +207,8 @@ GEM
       multi_json (~> 1.0.0)
       multi_xml (~> 0.4.0)
       simple_oauth (~> 0.1.5)
+    twitter-text (1.4.12)
+      activesupport
     tzinfo (0.3.30)
     uglifier (1.0.3)
       execjs (>= 0.3.0)
@@ -237,6 +239,7 @@ DEPENDENCIES
   therubyracer
   turn
   twitter
+  twitter-text
   uglifier
   whenever
   will_paginate

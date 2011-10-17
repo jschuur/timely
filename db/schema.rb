@@ -11,20 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111010172429) do
+ActiveRecord::Schema.define(:version => 20111017081303) do
 
   create_table "tweets", :force => true do |t|
     t.integer  "user_id"
     t.string   "long_url"
     t.string   "short_url"
     t.string   "message"
-    t.integer  "user_clicks",    :default => 0
-    t.integer  "global_clicks",  :default => 0
-    t.string   "status",         :default => "pending"
+    t.integer  "user_clicks",                 :default => 0
+    t.integer  "global_clicks",               :default => 0
+    t.string   "status",                      :default => "pending"
     t.datetime "scheduled_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "tweet_uid"
+    t.integer  "tweet_uid",      :limit => 8
     t.string   "error"
     t.datetime "sent_date"
   end

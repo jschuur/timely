@@ -7,6 +7,7 @@ gem 'rails', '3.1.0'
 
 gem 'mysql2'
 gem 'twitter'
+gem 'twitter-text'
 gem 'omniauth'
 gem 'bitly'
 gem 'nokogiri'

@@ -5,6 +5,7 @@ class Tweet < ActiveRecord::Base
   scope :archived, where("status != 'pending'").order("sent_date DESC")
   scope :overdue, lambda { where("scheduled_date < ? AND status='pending'", Time.now.utc) }
   scope :sent, where(:status => 'sent')
+  scope :imported, where(:status => 'imported')
 
   self.per_page = 10
 

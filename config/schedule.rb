@@ -11,6 +11,7 @@ end
 
 every 30.minutes do
   runner "Tweet.update_stats(1.week.ago)"
+  runner "User.import_tweets"
 end
 
 every 1.day do

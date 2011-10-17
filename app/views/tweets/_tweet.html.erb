@@ -9,9 +9,10 @@
       <%= link_to "edit", edit_tweet_path(tweet) %> &middot;
       <%= link_to "delete", tweet, :confirm => "Delete the tweet '#{tweet.message}'?", :method => :delete %>
     <% elsif tweet.status == 'sent' %>
-      Status: <span class="status_sent"><%= link_to "sent", "https://twitter.com/#!/#{tweet.user.twitter_handle}/status/#{tweet.tweet_uid}" %></span> <%= tweet.sent_date.strftime(" (%m/%d/%y %I:%M%P)") if tweet.sent_date %>. Clicks: <%= "#{tweet.user_clicks.to_i}/#{tweet.global_clicks.to_i}." %>
+      Status: <span class="status_sent"><%= link_to "sent", "https://twitter.com/#!/#{tweet.user.twitter_handle}/status/#{tweet.tweet_uid}" %></span>. Clicks: <%= "#{tweet.user_clicks.to_i}/#{tweet.global_clicks.to_i}." %>
     <% else %>
-      Status: <span class="status_<%= tweet.status %>" <%= " title='#{tweet.error}'" if tweet.error %>><%= tweet.status %></span>
+      Status: <span class="status_<%= tweet.status %>" <%= " title='#{tweet.error}'" if tweet.error %>><%= tweet.status %></span>.
     <% end %>
+    <%= tweet.sent_date.strftime(" (%m/%d/%y %I:%M%P)") if tweet.sent_date %>
   </div>
 </div>
