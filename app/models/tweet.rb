@@ -66,7 +66,7 @@ class Tweet < ActiveRecord::Base
       else
         $boxcar.notify(user.email_address, "Successfully sent #{user.twitter_handle} tweet '#{message}'.")
         log.info "[#{Time.now}] Successfully sent tweet ID ##{id} for #{user.twitter_handle}"
-        update_attributes({ :status => 'sent', :tweet_uid => response.id, :sent_date => Time.now })
+        update_attributes({ :status => 'sent', :tweet_uid => response.id.to_i, :sent_date => Time.now })
       end
     else
       log.error "[#{Time.now}] Invalid user ID ##{user_id} for tweet ID ##{id}"
