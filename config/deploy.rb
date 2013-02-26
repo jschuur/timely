@@ -1,6 +1,9 @@
 require 'rvm/capistrano'
 require 'capistrano_colors'
 
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+
 set :application, "tweetlater"
 
 set :rvm_ruby_string, 'ruby-1.9.3-p392'
@@ -56,7 +59,13 @@ namespace :bundler do
   end
 end
 
+namespace :rvm do
+  task :trust_rvmrc do
+    run "rvm rvmrc trust #{release_path}"
+  end
+end
+
 after "deploy:rollback:revision", "bundler:install"
 after "deploy:update_code", "bundler:bundle_new_release"
 after "deploy:update_code", "deploy:asset_precompile"
-
+after "deploy", "rvm:trust_rvmrc"
