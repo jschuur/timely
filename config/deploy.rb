@@ -4,20 +4,20 @@ require 'capistrano_colors'
 
 set :application, "tweetlater"
 
-set :rvm_ruby_string, 'ruby-1.9.2-p180'
-set (:deploy_to) {"/www/#{application}"}
+set :rvm_ruby_string, 'ruby-1.9.3-p392'
+set :deploy_to, "/www/tweetlater.joostschuur.com"
 
 set :repository,  "git@git.joostschuur.com:tweetlater.git"
 set :scm, :git
 set :scm_verbose, true
 set :deploy_via, :remote_cache
 
-set :use_sudo, false            
-set :user, "jschuur"
+set :use_sudo, false
+set :user, "rails"
 
-role :web, "nicky.joostschuur.com"                          # Your HTTP server, Apache/etc
-role :app, "nicky.joostschuur.com"                          # This may be the same as your `Web` server
-role :db,  "nicky.joostschuur.com", :primary => true # This is where Rails migrations will run
+role :web, "ocean.joostschuur.com"                          # Your HTTP server, Apache/etc
+role :app, "ocean.joostschuur.com"                          # This may be the same as your `Web` server
+role :db,  "ocean.joostschuur.com", :primary => true # This is where Rails migrations will run
 
 namespace :deploy do
   task :start do ; end
