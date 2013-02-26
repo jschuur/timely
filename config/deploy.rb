@@ -1,10 +1,10 @@
-$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 require 'rvm/capistrano'
 require 'capistrano_colors'
 
 set :application, "tweetlater"
 
 set :rvm_ruby_string, 'ruby-1.9.3-p392'
+set :rvm_type, :system
 set :deploy_to, "/www/tweetlater.joostschuur.com"
 
 set :repository,  "git@git.joostschuur.com:tweetlater.git"
