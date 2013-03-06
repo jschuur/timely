@@ -32,6 +32,6 @@
 <h3>Bookmarklet</h3>
 
 <% bookmarklet = "javascript:(function(){window.open('#{root_url}?url='+encodeURIComponent(location.href)+'&access_token=#{current_user.access_token}')})()" %>
-Use this <a href="<%= bookmarklet %>">tweet later (<%= current_user.twitter_handle %>)</a> bookmarklet to schedule tweets from this account or copy the bookmarklet link below for your mobile devices:
+Use this <a href="<%= bookmarklet %>">timely (<%= current_user.twitter_handle %>)</a> bookmarklet to schedule tweets from this account or copy the bookmarklet link below for your mobile devices:
 <p>
 <textarea id="bookmarklet" cols="80" rows="3"><%= bookmarklet %></textarea>

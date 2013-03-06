@@ -1,4 +1,4 @@
-APP_NAME= "Tweet Later"
+APP_NAME= "Timely"
 
 if Rails.env.development?
   TWITTER_KEY = 'd2p0K6e4xNUZituIpeNtYw'
