@@ -6,7 +6,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: rails_dev_tweetlater
+  database: rails_dev_timely
   username: rails
   password: rails
   socket: /usr/local/var/mysql/mysql.sock
@@ -16,6 +16,6 @@ production:
   encoding: utf8
   pool: 5
   hostname: localhost
-  database: rails_prod_tweetlater
-  username: tweetlater
+  database: rails_prod_timely
+  username: timely
   password: RqmZ2HZ.wKqm-yz6gPVH

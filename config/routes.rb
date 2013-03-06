@@ -1,4 +1,4 @@
-Tweetlater::Application.routes.draw do
+Timely::Application.routes.draw do
   root :to => 'tweets#index', :as => :root
 
   match "auth/twitter/callback" => "sessions#create"

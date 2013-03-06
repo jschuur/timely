@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Tweetlater::Application.load_tasks
+Timely::Application.load_tasks

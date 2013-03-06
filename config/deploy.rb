@@ -4,13 +4,13 @@ require 'capistrano_colors'
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 
-set :application, "tweetlater"
+set :application, "timely"
 
 set :rvm_ruby_string, 'ruby-1.9.3-p392'
 set :rvm_type, :system
-set :deploy_to, "/www/tweetlater.joostschuur.com"
+set :deploy_to, "/www/timely.joostschuur.com"
 
-set :repository,  "git@git.joostschuur.com:tweetlater.git"
+set :repository,  "git@git.joostschuur.com:timely.git"
 set :scm, :git
 set :scm_verbose, true
 set :deploy_via, :remote_cache
