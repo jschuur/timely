@@ -29,6 +29,12 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
   
+  desc "Symlink shared configs on each release."
+  task :symlink_shared do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/initializers/app.rb #{release_path}/config/initializers/app.rb"
+  end
+
   task :asset_precompile do
     run "cd #{release_path}; RAILS_ENV=production rake assets:precompile"
   end
@@ -67,5 +73,6 @@ end
 
 after "deploy:rollback:revision", "bundler:install"
 after "deploy:update_code", "bundler:bundle_new_release"
+after "deploy:update_code", "deploy:symlink_shared"
 after "deploy:update_code", "deploy:asset_precompile"
 after "deploy", "rvm:trust_rvmrc"

@@ -1,0 +1,17 @@
+APP_NAME= "Timely"
+
+if Rails.env.development?
+  TWITTER_KEY = ''
+  TWITTER_SECRET = ''
+else
+  TWITTER_KEY = ''
+  TWITTER_SECRET = ''
+end
+
+BOXCAR_KEY = ''
+BOXCAR_SECRET = ''
+
+$boxcar = BoxcarAPI::Provider.new(BOXCAR_KEY, BOXCAR_SECRET)
+
+CONTROLLER_SPECIFIC_JAVASCRIPT = %w(tweets users)
+
