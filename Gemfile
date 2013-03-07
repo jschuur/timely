@@ -18,6 +18,12 @@ gem 'boxcar_api'
 gem 'css3buttons'
 gem 'will_paginate'
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
+
 # JavaScript runtime for Rails 3.1 asset compilation
 group :production do
   gem 'therubyracer'
